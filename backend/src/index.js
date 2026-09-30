@@ -11,7 +11,9 @@ import { guestRoute } from "../routes/guest.route";
 const app = new Elysia({ prefix: "/api" })
   .use(
     cors({
-      origin: ["http://localhost:4000", "http://localhost:3000"],
+      origin: process.env.FRONTEND_URL
+        ? [process.env.FRONTEND_URL, "http://localhost:4000", "http://localhost:3000"]
+        : true,
       credentials: true,
     })
   )
