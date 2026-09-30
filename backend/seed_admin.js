@@ -26,6 +26,18 @@ async function main() {
     console.log("tb_user updatedAt fix note:", err.message);
   }
 
+  console.log("Checking and ensuring default roles exist in tb_role...");
+  await prisma.$executeRawUnsafe(`
+    INSERT INTO tb_role (role_id, role_name, role_status, role_des, createdAt, updatedAt)
+    VALUES 
+      (1, 'Admin', 'active', 'ผู้ดูแลระบบสูงสุด', NOW(), NOW()),
+      (2, 'User', 'active', 'สมาชิกทั่วไป', NOW(), NOW())
+    ON DUPLICATE KEY UPDATE 
+      role_name = VALUES(role_name), 
+      role_status = VALUES(role_status), 
+      updatedAt = NOW()
+  `);
+
   console.log("Querying roles using raw query...");
   const roles = await prisma.$queryRawUnsafe(`SELECT role_id, role_name FROM tb_role`);
   console.log("Found roles:", roles);
