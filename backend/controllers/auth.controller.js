@@ -107,12 +107,13 @@ export const authController = {
         const token = await jwt.sign(payload);
         set.headers[
           "Set-Cookie"
-        ] = `token=${token}; HttpOnly; Secure; Path=/; SameSite=Strict; Max-Age=86400`;
+        ] = `token=${token}; HttpOnly; Secure; Path=/; SameSite=None; Partitioned; Max-Age=86400`;
 
         set.status = 200;
         return {
           roleId: 1,
           ok: true,
+          token,
         };
       }
 
@@ -149,12 +150,13 @@ export const authController = {
       const token = await jwt.sign(payload);
       set.headers[
         "Set-Cookie"
-      ] = `token=${token}; HttpOnly; Secure; Path=/; SameSite=Strict; Max-Age=86400`;
+      ] = `token=${token}; HttpOnly; Secure; Path=/; SameSite=None; Partitioned; Max-Age=86400`;
 
       set.status = 200;
       return {
         roleId: user.roleId,
         ok: true,
+        token,
       };
     } catch (error) {
       console.error(error);
@@ -166,7 +168,7 @@ export const authController = {
     try {
       set.headers[
         "Set-Cookie"
-      ] = `token=; HttpOnly; Secure; Path=/; SameSite=Strict; Max-Age=86400`;
+      ] = `token=; HttpOnly; Secure; Path=/; SameSite=None; Partitioned; Max-Age=0`;
 
       set.status = 200;
       return { ok: true };

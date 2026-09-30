@@ -123,6 +123,9 @@ const Menu = () => {
         { withCredentials: true }
       );
       if (res.status === 200) {
+        try {
+          localStorage.removeItem("token");
+        } catch (e) {}
         popup.success("ออกจากระบบแล้ว");
         location.href = "/";
       }

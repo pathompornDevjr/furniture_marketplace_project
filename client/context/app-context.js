@@ -1,7 +1,23 @@
 "use client";
-import { createContext, useContext, useState } from "react";
-
+import { createContext, useContext, useState, useEffect } from "react";
+import axios from "axios";
 import { ToastContainer } from "react-toastify";
+
+if (typeof window !== "undefined") {
+  axios.interceptors.request.use((config) => {
+    try {
+      const token = localStorage.getItem("token");
+      if (token) {
+        config.headers = config.headers || {};
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+    } catch (e) {
+      // ignore
+    }
+    config.withCredentials = true;
+    return config;
+  });
+}
 
 const appContext = createContext(undefined);
 

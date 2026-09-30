@@ -34,6 +34,9 @@ const SignIn = () => {
         return popup.err(res.data.err);
       }
       if (res.status === 200) {
+        if (res.data?.token) {
+          localStorage.setItem("token", res.data.token);
+        }
         popup.success("เข้าสู่ระบบเรียบร้อยแล้ว");
         if (Number(res.data.roleId) === 1) {
           location.href = "/admin/dashboard";

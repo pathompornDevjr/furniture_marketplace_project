@@ -1,6 +1,21 @@
+const extractToken = ({ headers, request, cookie }) => {
+  const authHeader =
+    headers?.authorization ||
+    headers?.Authorization ||
+    (request?.headers ? request.headers.get("authorization") : null);
+
+  if (authHeader && typeof authHeader === "string") {
+    return authHeader.startsWith("Bearer ")
+      ? authHeader.slice(7).trim()
+      : authHeader.trim();
+  }
+
+  return cookie?.token?.value?.split(" ")[0] || null;
+};
+
 export const middleware = {
-  auth: async ({ jwt, set, cookie, store }) => {
-    const token = cookie?.token?.value?.split(" ")[0] || null;
+  auth: async ({ jwt, set, cookie, store, headers, request }) => {
+    const token = extractToken({ headers, request, cookie });
     // token not found
     if (!token) {
       set.status = 401;
@@ -16,8 +31,8 @@ export const middleware = {
 
     store.user = user;
   },
-  auth_admin: async ({ jwt, set, cookie, store }) => {
-    const token = cookie?.token?.value?.split(" ")[0] || null;
+  auth_admin: async ({ jwt, set, cookie, store, headers, request }) => {
+    const token = extractToken({ headers, request, cookie });
     // token not found
     if (!token) {
       set.status = 401;

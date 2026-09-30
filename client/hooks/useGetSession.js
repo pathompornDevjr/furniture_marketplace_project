@@ -2,6 +2,23 @@ import { envConfig } from "@/config/env-config";
 import axios from "axios";
 import { useEffect, useState, useCallback } from "react";
 
+// Setup global axios interceptor to attach Bearer token across all requests
+if (typeof window !== "undefined") {
+  axios.interceptors.request.use((config) => {
+    try {
+      const token = localStorage.getItem("token");
+      if (token) {
+        config.headers = config.headers || {};
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+    } catch (e) {
+      // ignore storage errors
+    }
+    config.withCredentials = true;
+    return config;
+  });
+}
+
 // Global in-memory cache shared across all components and page transitions
 let globalSessionUser = null;
 let globalChecking = false;
