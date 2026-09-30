@@ -1,0 +1,167 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model tb_role {
+  role_id     Int      @id @default(autoincrement())
+  role_name   String
+  role_status String?
+  role_des    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt // ✅ อัปเดตอัตโนมัติเมื่อมีการแก้ไข
+
+  users tb_user[]
+}
+
+model banners {
+  id        Int      @id @default(autoincrement())
+  img       String
+  status    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model tb_user {
+  user_id     Int      @id @default(autoincrement())
+  user_name   String   @unique
+  password    String
+  profile     String?
+  title_type  String
+  first_name  String
+  last_name   String
+  gender      String?
+  birth_date  String?
+  tel         String?
+  email       String?
+  address     String?
+  ctn_status  String // ✅ แก้ typo
+  remark      String?
+  bank_number String?
+  bank_name   String?
+  bank_owner  String?
+  allowed     Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  roleId Int     @default(2)
+  role   tb_role @relation(fields: [roleId], references: [role_id])
+
+  bill_orders     tb_billorder[]
+  tb_user_address tb_user_address[]
+}
+
+model tb_category {
+  id        Int      @id @default(autoincrement())
+  img       String?
+  name      String
+  remark    String
+  status    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  products tb_product[] @relation("ProductCategories")
+}
+
+model tb_product {
+  pro_id      Int      @id @default(autoincrement())
+  pro_name    String
+  pro_price   Float
+  freight     Float
+  pro_number  Int
+  pro_color   String
+  pro_size    String
+  pro_details String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  sell_count  Int
+  unit        String?
+
+  imgs          tb_pro_img[]
+  order_details tb_orderdetails[]
+  categories    tb_category[]     @relation("ProductCategories")
+
+  // Add promotion relation
+  promotion_id Int?          @map("promotion_id")
+  promotion    tb_promotion? @relation(fields: [promotion_id], references: [id])
+}
+
+model tb_promotion {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  description String?
+  discount    String
+  start_date  DateTime
+  end_date    DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  products tb_product[] // One promotion has many products
+}
+
+model tb_billorder {
+  bill_id            String    @id @unique
+  bill_date          DateTime // วันที่สั่งซื้อ
+  bill_pm            DateTime? // วันที่ชำระ (optional กรณียังไม่จ่าย)
+  bill_productList   Int?
+  bill_productPeace  Int?
+  bill_freighttotal  Float // ยอดค่าจัดส่งรวม
+  bill_totalamount   Float // ✅ แก้สะกด
+  bill_totalDiscount Float?
+  bill_price         Float // ยอดรวมทั้งหมด
+  status_pm          String // สถานะชำระเงิน
+  pm_method          String // วิธีชำระเงิน
+  slip_pm            String? // หลักฐานชำระเงิน (optional)
+  slip_return        String? // หลักฐานการคืนเงินสินค้า (optional)
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  user_id Int
+  user    tb_user @relation(fields: [user_id], references: [user_id])
+
+  order_details tb_orderdetails[] // ✅ One-to-Many
+}
+
+model tb_orderdetails {
+  detail_id    Int     @id @default(autoincrement())
+  quantity     Int // ✅ แก้จาก String
+  unit         String
+  total_amount Float // ✅ แก้สะกด
+  status       String
+  color        String?
+  size         String?
+
+  bill_id String
+  bill    tb_billorder @relation(fields: [bill_id], references: [bill_id])
+
+  pro_id  Int
+  product tb_product @relation(fields: [pro_id], references: [pro_id])
+}
+
+model tb_pro_img {
+  id  Int    @id @default(autoincrement())
+  url String
+
+  tb_product       tb_product? @relation(fields: [tb_productPro_id], references: [pro_id])
+  tb_productPro_id Int?
+}
+
+model tb_user_address {
+  id           Int      @id @default(autoincrement())
+  user_id      Int
+  is_using     Boolean?
+  address      String
+  province     String
+  sub_district String
+  district     String
+  zipcode      String
+  phone        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         tb_user  @relation(fields: [user_id], references: [user_id])
+}

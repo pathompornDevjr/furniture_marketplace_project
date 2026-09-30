@@ -1,0 +1,241 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  
+  --color-primary: #fbc50e;
+  --color-primary-dark: #e0ac00;
+  --color-primary-light: #fef9c3;
+  --color-accent: #fbc50e;
+  --color-accent-light: #fef9c3;
+  --color-success: #10b981;
+  --color-success-light: #ecfdf5;
+  --color-danger: #e11d48;
+  --color-danger-light: #ffe4e6;
+  --color-warning: #f59e0b;
+  --color-warning-light: #fffbeb;
+  --color-brand-black: #111827;
+  --color-card-bg: #ffffff;
+  --color-surface-bg: #f8fafc;
+  --color-border-light: #f1f5f9;
+  --color-border-medium: #e2e8f0;
+  --color-border-dark: #cbd5e1;
+  --color-text-main: #111827;
+  --color-text-body: #374151;
+  --color-text-muted: #6b7280;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffffff;
+    --foreground: #111827;
+  }
+}
+
+body {
+  background: #f8fafc;
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+input,textarea {
+  outline: none;
+}
+button{
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+button:active{
+  transform: scale(0.98);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ==========================================================
+   SweetAlert2 Custom Luxury Theme
+   ========================================================== */
+
+/* Translucent backdrop with soft modern blur */
+.swal2-container.swal2-backdrop-show {
+  background: rgba(17, 24, 39, 0.45) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+}
+
+/* Modal Card Body */
+.swal2-popup {
+  border-radius: 1.25rem !important; /* 20px */
+  background: #ffffff !important;
+  border: 1px solid rgba(226, 232, 240, 0.85) !important;
+  box-shadow: 0 25px 50px -12px rgba(17, 24, 39, 0.22), 0 0 0 1px rgba(0, 0, 0, 0.03) !important;
+  padding: 2rem 1.75rem 1.75rem 1.75rem !important;
+  font-family: inherit !important;
+}
+
+/* Title */
+.swal2-title {
+  color: #111827 !important;
+  font-size: 1.25rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  padding: 0.5rem 0 0 0 !important;
+  margin: 0 0 0.5rem 0 !important;
+}
+
+/* Subtitle / Text Description */
+.swal2-html-container {
+  color: #4b5563 !important;
+  font-size: 0.925rem !important;
+  line-height: 1.6 !important;
+  font-weight: 500 !important;
+  margin: 0 0 1.25rem 0 !important;
+}
+
+/* Action Buttons Container */
+.swal2-actions {
+  display: flex !important;
+  gap: 0.75rem !important;
+  margin-top: 1.25rem !important;
+  width: 100% !important;
+  justify-content: center !important;
+}
+
+/* Primary Confirm Button (System Brand Amber #fbc50e) */
+.swal2-confirm {
+  background-color: #fbc50e !important;
+  color: #111827 !important;
+  font-size: 0.925rem !important;
+  font-weight: 700 !important;
+  border-radius: 0.75rem !important;
+  padding: 0.65rem 1.5rem !important;
+  border: none !important;
+  box-shadow: 0 4px 14px rgba(251, 197, 14, 0.35) !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  cursor: pointer !important;
+}
+
+.swal2-confirm:hover {
+  background-color: #e0ac00 !important;
+  box-shadow: 0 6px 18px rgba(251, 197, 14, 0.45) !important;
+  transform: translateY(-1px) !important;
+}
+
+.swal2-confirm:active {
+  transform: scale(0.97) !important;
+}
+
+.swal2-confirm:focus {
+  box-shadow: 0 0 0 3px rgba(251, 197, 14, 0.4) !important;
+}
+
+/* Deny / Cancel Buttons */
+.swal2-deny,
+.swal2-cancel {
+  background-color: #f3f4f6 !important;
+  color: #374151 !important;
+  font-size: 0.925rem !important;
+  font-weight: 600 !important;
+  border-radius: 0.75rem !important;
+  padding: 0.65rem 1.35rem !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: none !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  cursor: pointer !important;
+}
+
+.swal2-deny:hover,
+.swal2-cancel:hover {
+  background-color: #e5e7eb !important;
+  color: #1f2937 !important;
+  transform: translateY(-1px) !important;
+}
+
+.swal2-deny:active,
+.swal2-cancel:active {
+  transform: scale(0.97) !important;
+}
+
+.swal2-deny:focus,
+.swal2-cancel:focus {
+  box-shadow: 0 0 0 3px rgba(229, 231, 235, 0.8) !important;
+}
+
+/* Icons Refinement */
+.swal2-icon {
+  margin: 0.5rem auto 1rem auto !important;
+  transform: scale(0.95);
+}
+
+/* Success Icon (Emerald) */
+.swal2-icon.swal2-success {
+  border-color: #10b981 !important;
+  color: #10b981 !important;
+}
+.swal2-icon.swal2-success .swal2-success-ring {
+  border-color: rgba(16, 185, 129, 0.25) !important;
+}
+.swal2-icon.swal2-success [class^="swal2-success-line"] {
+  background-color: #10b981 !important;
+}
+
+/* Error Icon (Rose/Red) */
+.swal2-icon.swal2-error {
+  border-color: #f43f5e !important;
+  color: #f43f5e !important;
+}
+.swal2-icon.swal2-error [class^="swal2-x-mark-line"] {
+  background-color: #f43f5e !important;
+}
+
+/* Warning & Question Icons (Brand Amber & Warm Gold) */
+.swal2-icon.swal2-warning {
+  border-color: #f59e0b !important;
+  color: #f59e0b !important;
+}
+.swal2-icon.swal2-question {
+  border-color: #fbc50e !important;
+  color: #d97706 !important;
+}
+.swal2-icon.swal2-info {
+  border-color: #3b82f6 !important;
+  color: #3b82f6 !important;
+}
+
+/* Progress Bar (Brand Gold) */
+.swal2-timer-progress-bar {
+  background: #fbc50e !important;
+  height: 0.25rem !important;
+}
+
+/* Danger Confirm Button Override */
+.swal2-confirm.swal2-danger-confirm {
+  background-color: #e11d48 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(225, 29, 72, 0.35) !important;
+}
+.swal2-confirm.swal2-danger-confirm:hover {
+  background-color: #be123c !important;
+  box-shadow: 0 6px 18px rgba(225, 29, 72, 0.45) !important;
+}
