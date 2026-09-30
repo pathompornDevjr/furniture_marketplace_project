@@ -3,7 +3,9 @@
   "version": "1.0.50",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.js"
+    "dev": "bun run --watch src/index.js",
+    "build": "prisma generate",
+    "start": "bun run src/index.js"
   },
   "dependencies": {
     "@elysiajs/cors": "^1.3.3",

@@ -1,0 +1,33 @@
+<svg viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#fde047" />
+      <stop offset="50%" stopColor="#fbc50e" />
+      <stop offset="100%" stopColor="#d97706" />
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#1e1e24" />
+      <stop offset="100%" stopColor="#111114" />
+    </linearGradient>
+  </defs>
+
+  <!-- Badge Background -->
+  <rect x="2" y="2" width="44" height="44" rx="12" fill="url(#bgGrad)" stroke="#333333" stroke-width="1.5"/>
+
+  <!-- House Silhouette -->
+  <path d="M24 8L10 19H14V36C14 37.1 14.9 38 16 38H32C33.1 38 34 37.1 34 36V19H38L24 8Z" stroke="url(#goldGrad)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Chimney -->
+  <path d="M30 13V10H33V15.5" stroke="url(#goldGrad)" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- Modern Armchair inside -->
+  <path d="M19 22C19 20.8 19.8 20 21 20H27C28.2 20 29 20.8 29 22V26H19V22Z" fill="url(#goldGrad)" fill-opacity="0.3" stroke="url(#goldGrad)" stroke-width="1.5"/>
+  <rect x="17" y="23" width="3.5" height="7" rx="1.2" fill="url(#goldGrad)"/>
+  <rect x="27.5" y="23" width="3.5" height="7" rx="1.2" fill="url(#goldGrad)"/>
+  <rect x="18.5" y="25.5" width="11" height="4.5" rx="1.2" fill="url(#goldGrad)"/>
+  <path d="M19 30L17.5 33M29 30L30.5 33" stroke="url(#goldGrad)" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- Typography -->
+  <text x="56" y="24" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#111827" letter-spacing="-0.5px">FURNITURE</text>
+  <circle cx="152" cy="18" r="2.5" fill="#fbc50e"/>
+  <text x="56.5" y="36" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="800" fill="#b48300" letter-spacing="2.5px">MARKETPLACE</text>
+</svg>

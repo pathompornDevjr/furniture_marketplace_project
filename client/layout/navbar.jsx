@@ -1,6 +1,7 @@
 "use client";
 import { envConfig } from "@/config/env-config";
 import SafeImage from "@/components/safe-image";
+import BrandLogo from "@/components/brand-logo";
 import useGetSeesion from "@/hooks/useGetSession";
 import { popup } from "@/libs/alert-popup";
 import axios from "axios";
@@ -268,13 +269,8 @@ const Navbar = () => {
 
       {/* 2. Main Header (Logo, Search, Cart) */}
       {pathName === "/cart" || pathName === "/checkout" ? (
-        <div className="w-full py-4 px-4 lg:px-12 flex items-center justify-between border-b border-neutral-200 bg-white">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="bg-[#111111] text-[#fbc50e] px-3 py-1.5 rounded-lg font-black text-xl tracking-tight shadow-sm flex items-center gap-1.5">
-              <span>FURNITURE</span>
-              <span className="text-white text-[10px] font-medium tracking-widest pl-1.5 border-l border-neutral-700">MARKETPLACE</span>
-            </div>
-          </Link>
+        <div className="w-full py-3.5 px-4 lg:px-12 flex items-center justify-between border-b border-neutral-200 bg-white">
+          <BrandLogo size="md" href="/" />
           <div className="text-sm font-semibold text-neutral-800 border-l-2 border-[#fbc50e] pl-3 py-0.5">
             {pathName === "/cart" ? "รถเข็นสินค้าของคุณ" : "ดำเนินการสั่งซื้อสินค้า"}
           </div>
@@ -292,14 +288,7 @@ const Navbar = () => {
             </button>
 
             {/* Brand Logo - Furniture Marketplace */}
-            <Link href="/" className="flex items-center gap-2 shrink-0 group">
-              <div className="bg-[#111111] text-[#fbc50e] px-3.5 py-1.5 rounded-md font-black text-xl lg:text-2xl tracking-tight shadow-xs group-hover:bg-black transition-colors flex items-center">
-                <span>FURNITURE</span>
-                <span className="text-white text-[10px] font-semibold tracking-wider ml-1.5 pl-1.5 border-l border-neutral-700">
-                  MARKETPLACE
-                </span>
-              </div>
-            </Link>
+            <BrandLogo size="md" href="/" />
 
             {/* Central Search Bar with Index Style */}
             <div className="flex-1 max-w-2xl hidden md:flex flex-col gap-1">

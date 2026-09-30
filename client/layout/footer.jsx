@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import BrandLogo from "@/components/brand-logo";
 import {
   FaFacebookF,
   FaInstagram,
@@ -25,16 +26,9 @@ const Footer = () => {
       {/* 1. Top Socials & Brand Strip */}
       <div className="w-full border-b border-neutral-800 bg-[#161616] py-5 px-4 lg:px-12">
         <div className="w-full max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2.5">
-            <div className="flex items-center gap-1.5 bg-neutral-900 border border-neutral-800 px-2.5 py-1 rounded-lg">
-              <span className="bg-[#fbc50e] text-neutral-950 font-black text-xs px-2 py-0.5 rounded tracking-wider uppercase">
-                furniture
-              </span>
-              <span className="text-xs font-bold text-white tracking-wider uppercase">
-                marketplace
-              </span>
-            </div>
-            <span className="text-xs text-neutral-400 hidden sm:inline">
+          <div className="flex items-center gap-3">
+            <BrandLogo theme="dark" size="sm" />
+            <span className="text-xs text-neutral-400 hidden sm:inline border-l border-neutral-700/80 pl-3">
               เฟอร์นิเจอร์และของแต่งบ้านครบวงจร เพื่อการใช้ชีวิตที่ลงตัว
             </span>
           </div>

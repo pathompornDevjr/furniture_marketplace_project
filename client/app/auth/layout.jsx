@@ -12,6 +12,7 @@ import {
   FaArrowLeft,
 } from "react-icons/fa";
 import { MdSupportAgent } from "react-icons/md";
+import BrandLogo from "@/components/brand-logo";
 
 const AuthLayout = ({ children }) => {
   const { checking, user } = useGetSeesion();
@@ -40,14 +41,7 @@ const AuthLayout = ({ children }) => {
 
         {/* Top: Logo & Back to Home */}
         <div className="flex items-center justify-between z-10">
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="bg-[#111111] text-[#fbc50e] px-3.5 py-1.5 rounded font-black text-xl lg:text-2xl tracking-tight border border-neutral-700 shadow-sm flex items-center">
-              <span>FURNITURE</span>
-              <span className="text-white text-[10px] font-semibold tracking-wider ml-1.5 pl-1.5 border-l border-neutral-700">
-                MARKETPLACE
-              </span>
-            </div>
-          </Link>
+          <BrandLogo theme="dark" size="md" href="/" />
 
           <Link
             href="/"
@@ -130,14 +124,7 @@ const AuthLayout = ({ children }) => {
       <div className="w-full lg:w-1/2 flex flex-col items-center justify-center min-h-screen p-4 sm:p-8 lg:p-12 overflow-y-auto">
         {/* Mobile Header Logo */}
         <div className="flex flex-col items-center gap-2 mb-6 lg:hidden">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="bg-[#111111] text-[#fbc50e] px-3 py-1.5 rounded font-black text-lg tracking-tight border border-neutral-700 shadow-sm flex items-center">
-              <span>FURNITURE</span>
-              <span className="text-white text-[9px] font-semibold tracking-wider ml-1 pl-1 border-l border-neutral-700">
-                MARKETPLACE
-              </span>
-            </div>
-          </Link>
+          <BrandLogo size="md" href="/" />
           <Link
             href="/"
             className="text-xs text-neutral-500 hover:text-black mt-1 flex items-center gap-1"

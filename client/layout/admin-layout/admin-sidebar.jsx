@@ -23,6 +23,7 @@ import {
 import Loading from "../loading";
 import { NO_PROFILE } from "@/config/constants";
 import SafeImage from "@/components/safe-image";
+import BrandLogo from "@/components/brand-logo";
 
 const Menu = () => {
   const path = usePathname();
@@ -156,20 +157,7 @@ const Menu = () => {
         <div className="w-full flex flex-col min-h-0">
           {/* Header Brand */}
           <div className="flex items-center justify-between pb-4 mb-3 border-b border-neutral-800/90">
-            <Link
-              href="/admin/dashboard"
-              className="flex items-center gap-2.5 group"
-            >
-              {/* Furniture Marketplace Logo Badge */}
-              <div className="flex items-center gap-1.5 bg-neutral-900 border border-neutral-700/80 px-2.5 py-1.5 rounded-xl shadow-xs">
-                <span className="bg-[#fbc50e] text-neutral-950 font-black text-xs px-1.5 py-0.5 rounded tracking-wider">
-                  FURNITURE
-                </span>
-                <span className="text-xs font-bold text-white tracking-wider">
-                  MARKETPLACE
-                </span>
-              </div>
-            </Link>
+            <BrandLogo theme="dark" size="sm" href="/admin/dashboard" />
 
             {showResponsive && (
               <button
