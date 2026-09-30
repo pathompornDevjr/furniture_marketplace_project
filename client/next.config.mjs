@@ -24,7 +24,6 @@ const nextConfig = {
       "sweetalert2",
     ],
   },
-  allowedDevOrigins: false
 };
 
 export default nextConfig;
